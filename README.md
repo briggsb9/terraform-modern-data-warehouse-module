@@ -16,8 +16,13 @@ Creates a modern Data Warehouse Architecture in Azure using managed identities f
 
 ![Image of components](URL)
 
-# Prerequisites
+# Variable Prerequisites
 * Azure SQL server admin username and password
+* Security admins Azure AD group id for access to Key Vault
+* Azure AD SQL admin group id
+* Azure AD tenant (Directory) id
+* Notification email address
+
 
 # Post Deployment
 * Setup database level access for the Data Factory managed identity using something like:

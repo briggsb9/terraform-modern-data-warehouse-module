@@ -3,6 +3,7 @@ variable "service_short_name" {
   description = "This can be your project or service name. ERP, DW etc"
 }
 variable "environment_short_name" {
+  default = "Dev"
   description = "Prod, Dev, UAT etc"
 }
 variable "location" {
@@ -11,9 +12,10 @@ variable "location" {
 variable "common_tags" {
   type = map
   description = "Can be used to feed platform wide tags from a wider terraform deployment"
-}
-variable "security_admins_group_id" {
-  description = "Object ID of principal (should be group) of a security group for full permissions to Key Vault secrets"
+  default = {
+    ManagedBy = "Terraform"
+    Owner = "Cloud Ops"
+  }
 }
 variable "solution_tags" {
   type = map
@@ -22,17 +24,21 @@ variable "solution_tags" {
     CostCentre = "Data Analytics"
   }
 }
+variable "security_admins_group_id" {
+  description = "REQUIRED - Object ID of principal (should be group) of a security group for full permissions to Key Vault secrets"
+}
 variable "azuread_sql_admin_group_id" {
-  description = "Object ID of principal (should be group) of an Azure AD SQL administrators group"
+  description = "REQUIRED - Object ID of principal (should be group) of an Azure AD SQL administrators group"
 }
 variable "sql-admin-username" {
-  description = "SA username for intial setup of Azure SQL server"
+  description = "REQUIRED - SA username for intial setup of Azure SQL server"
 }
 variable "sql-admin-password" {
-  description = "SA password for intial setup of Azure SQL server"
+  description = "REQUIRED - SA password for intial setup of Azure SQL server"
 }
 variable "tenant-id" {
+  description = "REQUIRED - Azure Directory ID"
 }
 variable "notificationemailaddress"{
-  description = "Email address for notifications"
+  description = "REQUIRED - Email address for notifications"
 }
